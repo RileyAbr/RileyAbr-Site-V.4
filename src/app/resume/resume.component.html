@@ -1,0 +1,61 @@
+<main>
+
+
+    <div class="container">
+
+        <ng-container *ngFor="let listing of eventList.slice().reverse()">
+            <div class="page-header text-center">
+                <h1>{{listing.year}}</h1>
+            </div>
+            <ul class="timeline">
+                <!-- The odd iterator keeps the first event listing on the top-left, and fills in the rest of the elements behind it -->
+                <ng-container *ngFor="let event of listing.events.slice().reverse(); odd as rightSide">
+                    <li [ngClass]="{'timeline-inverted': rightSide}">
+                        <div class="timeline-panel">
+                            <div class="timeline-header">
+
+                                <h4 class="timeline-title">{{event.title}}</h4>
+                                <div class="timeline-subhead">
+                                    <h5 class="timeline-tagline">{{event.tagline}}</h5>
+                                    <h6 class="timeline-date">{{event.date}}</h6>
+                                </div>
+
+                            </div>
+
+                            <div *ngIf="event.hasBodyContent" class="timeline-body">
+                                <ng-container [ngTemplateOutlet]="event.hasImage ? img_template : ''">
+                                    <ng-template #img_template>
+                                        <img class="event-image" src={{event.mediaPath}}>
+                                    </ng-template>
+                                </ng-container>
+                                <ng-container [ngTemplateOutlet]="event.hasBullets ? bullet_template : desc_template">
+                                    <ng-template #bullet_template>
+                                        <ul class="timeline-body-text timeline-body-ul">
+                                            <li *ngFor="let bullet of event.bullets">
+                                                {{bullet}}
+                                            </li>
+                                        </ul>
+                                    </ng-template>
+                                    <ng-template #desc_template>
+                                        <p class="timeline-body-text">
+                                            {{event.desc}}
+                                        </p>
+                                    </ng-template>
+                                </ng-container>
+                            </div>
+
+                            <div class="timeline-footer primary">
+                                <ng-container [ngTemplateOutlet]="event.hasExternalLink ? ext_template : ''">
+                                    <ng-template #ext_template>
+                                        <a href={{event.externalLink}} target="_blank" class="event-external-link">{{event.externalLinkText}}</a>
+                                    </ng-template>
+                                </ng-container>
+                            </div>
+                        </div>
+                    </li>
+                </ng-container>
+                <li class="clearfix" style="float: none;"></li>
+            </ul>
+        </ng-container>
+    </div>
+</main>

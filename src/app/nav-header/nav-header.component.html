@@ -1,0 +1,37 @@
+<!-- Navigation Header that sits at the top of every screen -->
+<nav class="navbar navbar-expand-lg navbar-light">
+
+    <a class="navbar-brand" routerLink="/">
+        <img id="RA-logo"src="assets/img/RA_Logo_Nav{{logoSelected}}.png" alt="Logo for Riley Abrahamson">
+        <span id="nametag" class="navbar-text align-middle">
+            Riley Abrahamson
+        </span>
+    </a>
+
+    <button  type="button" class="navbar-toggler" (click)="isCollapsed = !isCollapsed"
+        [attr.aria-expanded]="isCollapsed" aria-controls="nav-collapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div  class="collapse navbar-collapse" id="nav-collapse" [ngbCollapse]="isCollapsed">
+        <ul id="navigation" class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" (click)="isCollapsed = !isCollapsed" routerLink="resume"
+                    routerLinkActive="nav-active">Resume</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" (click)="isCollapsed = !isCollapsed" routerLink="portfolio"
+                    routerLinkActive="nav-active">Portfolio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" (click)="isCollapsed = !isCollapsed" routerLink="blog"
+                    routerLinkActive="nav-active">Blog</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" (click)="isCollapsed = !isCollapsed" routerLink="contact"
+                    routerLinkActive="nav-active">Contact</a>
+            </li>
+        </ul>
+    </div>
+
+</nav>

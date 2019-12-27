@@ -1,0 +1,63 @@
+<main>
+    <div class="portfolio-wrapper">
+
+        <!-- Loop that creates a listing of all the projects, starting with the most recent -->
+        <ng-container *ngFor="let project of projects.slice().reverse()">
+            <div (click)="open(content)" class="overlay-container">
+                <img class="overlay-image align-middle" src={{project.mediaPath}} />
+                <div class="overlay-hover">
+                    <div class="overlay-description">
+                        <p class="overlay-text">
+                            <strong>{{project.title}}</strong>
+                            <br>{{project.previewLine1}}
+                            <br>{{project.previewLine2}}
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Modal that pops-up with content from the for loop -->
+                <ng-template #content let-modal>
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="modal-basic-title">{{project.title}}</h4>
+                        <button type="button" class="modal-close close" aria-label="Close" (click)="modal.dismiss()">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="modal-desc">{{project.longDesc}}</p>
+                        <!-- Clunky Angular directive juggling that handles whether the project has an image or a video associated with it, and which to show -->
+                        <!-- https://stackoverflow.com/questions/48204477/passing-ngfor-variable-to-an-ngif-template -->
+                        <ng-container [ngTemplateOutlet]="project.modalIsImage ? image_template : video_template"
+                            [ngTemplateOutletContext]="{project:project}">
+                            <ng-template #image_template let-project="project">
+                                <img class="modal-preview-image" src={{project.modalMediaPath}} alt="">
+                            </ng-template>
+                            <ng-template #video_template let-project="project">
+                                <video #videoClip class="modal-preview-clip" src="{{project.modalMediaPath}}" controls
+                                    muted></video>
+                            </ng-template>
+                        </ng-container>
+                        <p class="modal-tech">Technologies used: {{project.techUsed}}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <!-- This directive juggle checks whether the listed project has an external link -->
+                        <ng-container [ngTemplateOutlet]="project.hasExternalLink ? external_template : ''"
+                            [ngTemplateOutletContext]="{project:project}">
+                            <ng-template #external_template let-project="project">
+                                <a class="modal-btn btn-outline-dark" href={{project.externalLink}}
+                                    target="_blank">Link to Project</a>
+                            </ng-template>
+                        </ng-container>
+                        <ng-container [ngTemplateOutlet]="project.hasGithHubRepo ? github_template : ''"
+                            [ngTemplateOutletContext]="{project:project}">
+                            <ng-template #github_template let-project="project">
+                                <a class="modal-btn" href={{project.gitHubLink}}
+                                    target="_blank">Link to GitHub Repo</a>
+                            </ng-template>
+                        </ng-container>
+                    </div>
+                </ng-template>
+            </div>
+        </ng-container>
+    </div>
+</main>

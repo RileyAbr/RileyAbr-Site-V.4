@@ -1,0 +1,115 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "styles/variables.scss";
+
+body {
+  min-height: 100vh;
+  @include triBackground;
+  @include bodyFont;
+}
+
+a {
+  text-decoration: none;
+  color: $fontColorBlack;
+}
+a:link,
+a:visited,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: $fontColorBlack;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @include headerFont;
+}
+
+// The header is a constant 110px, which means the content for each page should be offset by that much
+main {
+  padding: 10px 0;
+}
+
+// Override random webkit button rendering
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 0;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+  margin: 0.25rem;
+  cursor: pointer;
+}
+
+// This sits here, as the .modal-content div can't pick up styles because it is generated with an ng directive
+.modal-content {
+  background-color: $blockColorWhite;
+}
+
+// Carousel elements can be manipulated without ::deep, which will be deprec eventually. Using this as a temp method
+.carousel {
+  height: 100%;
+}
+
+.carousel-inner {
+  height: 100%;
+  @include lightShadowBorder;
+  // @include opacityTransition;
+}
+
+// Shelved until I can find a more satisfactory way to highlight the carousel
+// .carousel-inner:hover,
+// .carousel-inner:focus,
+// .carousel-inner:active {
+//   @include hoverOpacityTransition;
+//   opacity: 0.88;
+// }
+
+.carousel-slide-background-image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.carousel-slide-background-video {
+  position: absolute;
+  // top: -15%;
+  left: 0;
+  width: 130%;
+  height: auto;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  z-index: 15;
+  align-items: flex-end;
+}
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+  margin-bottom: 4vh;
+  cursor: pointer;
+}
+
+// Awesome carousel fade solution
+// https://stackoverflow.com/questions/42567906/animation-for-carousel-with-ng-boostrap-and-angular-2
+.carousel-item {
+  height: 100%;
+  transition: opacity 1.2s ease !important;
+  position: absolute !important;
+  display: block !important;
+  opacity: 0;
+}
+.carousel-item.active {
+  position: relative !important;
+  opacity: 1;
+}

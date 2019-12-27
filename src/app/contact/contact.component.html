@@ -1,0 +1,95 @@
+<main>
+    <div class="container-fluid">
+        <div class="row border-between">
+            <div class="col-md-9">
+                <div id="contact-container">
+                    <h2 class="contact-title">Need Something More Direct?</h2>
+                    <form>
+                        <div class='contact-row'>
+                            <label for='name'>Name</label>
+                            <input id='input-name' name='name' 
+                            type='text' placeholder="Your Name" />
+                        </div>
+
+                        <div class='contact-row'>
+                            <label for='company'>Company</label>
+                            <input id='input-company' name='company' type='text' placeholder="Your Company" />
+                        </div>
+
+                        <div class='contact-row'>
+                            <label for='email'>Email</label>
+                            <input id='input-email' name='email' type='email' placeholder="Your Email" />
+                        </div>
+
+                        <div class='contact-row'>
+                            <label for='reason'>Reason for Contact</label>
+                            <select id='input-reason' name='reason'>
+                                <option value='employment'>Employment Inquiry</option>
+                                <option value='collab'>Project Collaboration</option>
+                                <option value='freelance'>Freelance Work</option>
+                                <option value='bug'>Bug Report</option>
+                                <option value='chat'>Just Chattin'</option>
+                            </select>
+                        </div>
+
+                        <div class='contact-row'>
+                            <label for='message'>Field for other message details</label>
+                            <textarea id='input-message' name='message' placeholder="Any other Details?"></textarea>
+                        </div>
+
+                        <div class='contact-row btn-row'>
+                            <button type="button" (click)="open(contact_modal)" class='contact-btn'>Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="social-icons-wrapper">
+                    <!-- Icons made by Freepik from www.flaticon.com  -->
+                    <a href="mailto:riley.k.abrahamson@gmail.com" target="_blank">
+                        <img src="../../assets/img/social/Email_Logo.png" class="social-icon responsive">
+                    </a>
+                    <!-- Not Currently in Use -->
+                    <!-- <a href="tel:">
+                            <img src="../../assets/img/social/Phone_Logo.png" class="social-icon  responsive">
+                        </a> -->
+                    <a href="https://linkedin.com/in/rlyabr" target="_blank">
+                        <img src="../../assets/img/social/LI_Logo.png" class="social-icon responsive">
+                    </a>
+                    <a href="https://github.com/RileyAbr" target="_blank">
+                        <img src="../../assets/img/social/GH_Logo.png" class="social-icon responsive">
+                    </a>
+                    <a href="https://twitter.com/RileyAbrahamson" target="_blank">
+                        <img src="../../assets/img/social/TW_Logo.png" class="social-icon responsive">
+                    </a>
+                </div>
+            </div>
+
+            <!-- Modal for the form submit button -->
+            <ng-template #contact_modal let-modal>
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">Welp, this is kinda awkward...</h4>
+                    <button type="button" class="modal-close close" aria-label="Close" (click)="modal.dismiss()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="modal-desc">My current hosting solution has me limited in my back-end access, so this submission form doesn't currently work. The best way to contact me currently is via email, which you can access below. If you would be so kind, please send me your intial message to the address below!</p>
+                    <a class="contact-modal-email-link" href="mailto:riley.k.abrahamson@gmail.com" target="_blank">riley.k.abrahamson@gmail.com</a>
+                    <p class="modal-thanks">Thank you!</p>
+                </div>
+                <div class="modal-footer">
+                    <a type="button" (click)="modal.dismiss()" class="contact-modal-btn btn">   
+                        I would love to!
+                    </a>
+                    <a type="button" (click)="modal.dismiss()" class="contact-modal-btn btn">   
+                        Can do!
+                    </a>
+                    <a type="button" (click)="modal.dismiss()" class="contact-modal-btn btn">   
+                        Anything for you!
+                    </a>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</main>

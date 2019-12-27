@@ -1,0 +1,103 @@
+@import "../../styles/variables.scss";
+
+.container-fluid {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
+.row {
+  width: 100%;
+}
+
+.col-md-9 {
+  margin: 0 auto;
+}
+@media only screen and (max-width: nth($media-sizes, 4)) {
+  .col-md-9 {
+    max-width: 98%;
+    flex: 0 0 98%;
+    margin-bottom: 15px;
+  }
+}
+
+.carousel {
+  padding-bottom: 10px;
+}
+@media only screen and (max-width: nth($media-sizes, 4)) {
+  .col-md-9 {
+    height: 55vh;
+  }
+}
+
+.carousel-caption {
+  width: 100%;
+  right: 0;
+  left: 0;
+  bottom: 15px;
+}
+
+.blog-title {
+  color: $fontColorWhite;
+  background-color: rgba(42, 43, 49, 0.6);
+  margin-bottom: 0;
+  text-align: left;
+  padding-left: 30px;
+}
+
+.blog-date {
+  color: $fontColorWhite;
+  color: #e8f5f6;
+  background-color: rgba(42, 43, 49, 0.6);
+  text-align: left;
+  padding-left: 30px;
+}
+
+.read-btn {
+  @include purpleButton;
+  font-size: 1em;
+  padding: 7px 14px;
+  opacity: 0.9;
+}
+
+// Only positions the Twitter module, it is loaded dynamically with its own attributes
+.twitter-wrapper {
+  width: 100%;
+  margin: 0 0 15px;
+}
+@media only screen and (max-width: nth($media-sizes, 4)) {
+  // and (min-width: nth($media-sizes, 2))
+  .twitter-wrapper {
+    width: 80%;
+    margin: 15px auto 0;
+  }
+}
+@media only screen and (max-width: nth($media-sizes, 2)) {
+  .twitter-wrapper {
+    width: 94%;
+    margin: 15px auto 0;
+  }
+}
+
+// Awesome guide on creating easy vertical lines in Bootstrap
+// https://stackoverflow.com/questions/11815081/how-can-i-add-a-line-between-two-columns-using-twitter-bootstraps-grid-system
+.border-between > [class*="col-"]:before {
+  @include divisionLineHort;
+  bottom: 0;
+  content: " ";
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+.border-between > [class*="col-"]:first-child:before {
+  display: none;
+}
+@media only screen and (max-width: nth($media-sizes, 4)) {
+  .border-between > [class*="col-"]:before {
+    @include divisionLineVert;
+    content: " ";
+    right: 0;
+    position: absolute;
+  }
+}

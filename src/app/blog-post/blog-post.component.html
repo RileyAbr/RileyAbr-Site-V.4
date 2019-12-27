@@ -1,0 +1,45 @@
+<main>
+    <div class="container-fluid">
+        <div class="row border-between">
+            <div class="col-md-12 col-lg-3 blog-metadata">
+                <button class="blog-return-btn btn" (click)="goBack()">Go Back</button>
+                <div class="blog-meta-wrapper">
+                    <h1>{{blog.title}}</h1>
+                    <h2>{{blog.tagline}}</h2>
+                    <h3>{{blog.date}}</h3>
+                    <p>{{blog.abstract}}</p>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-6">
+                <div *ngIf="blog" class="blog-post-wrapper">
+                    <!-- Paragraphs are stored as individual objects within the  -->
+                    <ng-container *ngFor="let paragraph of blog.bodyParagraphs">
+                        <!-- Renders a hero image, if there is one -->
+                        <ng-container [ngTemplateOutlet]="paragraph.hasImage ? img_template : ''">
+                            <ng-template #img_template>
+                                <img class="blog-image" src={{paragraph.mediaPath}} alt="">
+                            </ng-template>
+                        </ng-container>
+                        <!-- Renders the subheading prior to the paragraph, if there is one -->
+                        <ng-container [ngTemplateOutlet]="paragraph.hasSubheading ? subhead_template : ''">
+                            <ng-template #subhead_template>
+                                <h5 class="blog-subheading">{{paragraph.subheading}}</h5>
+                            </ng-template>
+                        </ng-container>
+                        <!-- Renders the paragraph text and determines if it is italic via adding a class -->
+                        <p class="blog-paragraph" [ngClass]="{'blog-italic': paragraph.isItalic}">
+                            {{paragraph.text}}
+                        </p>
+                    </ng-container>
+                    <button class="blog-top-btn btn" (click)="scrollToTop()">Return to Top</button>
+                </div>
+            </div>
+            <div class="col-md col-lg">
+                <!-- Twitter embed is load after the init, through the TS file -->
+                <div class="twitter-wrapper">
+                    <app-twitter-timeline></app-twitter-timeline>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

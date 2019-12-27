@@ -1,0 +1,58 @@
+@import "../../styles/variables.scss";
+
+.home-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+
+.home-container {
+  height: 70vh;
+  width: 74%;
+}
+@media only screen and (max-width: nth($media-sizes, 4)) {
+  .home-container{
+    height: 78vh;
+  }
+}
+
+.top-home-row {
+  height: 50%;
+}
+
+.bot-home-row {
+  height: 50%;
+}
+
+.home-tile {
+  background-color: $blockColorBlack;
+  padding: 0;
+  @include triBackground;
+}
+
+.home-nav {
+  padding: 0 10px;
+  color: $fontColorWhite;
+  position: relative;
+  z-index: 2;
+  @include fontColorTransition;
+  background-color: rgba(42,43,49,.6);
+  display: inline-block;
+}
+
+// This selector changes the color of any of the labels for the carousels when the carousel is hovered
+.home-tile:hover .home-nav,
+.home-tile:focus .home-nav,
+.home-tile:active .home-nav {
+  color: $fontColorPurple;
+  @include fontColorTransition;
+
+}
+
+
+
+
+
+
+
+

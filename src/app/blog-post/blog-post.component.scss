@@ -1,0 +1,99 @@
+@import "../../styles/variables.scss";
+
+.blog-metadata {
+  padding-top: 5px;
+}
+
+.blog-meta-wrapper {
+}
+@media only screen and (max-width: nth($media-sizes, 4)) {
+  .blog-meta-wrapper {
+    width: 92%;
+    margin: 10px auto 0;
+  }
+}
+
+.blog-return-btn,
+.blog-top-btn {
+  @include purpleButton;
+  font-size: 1em;
+  padding: 7px 14px;
+}
+
+.blog-top-btn {
+  margin: 0 auto;
+  display: block;
+}
+
+.blog-post-wrapper {
+  width: 92%;
+  margin: 0 auto;
+}
+
+.blog-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  @include lightShadowBorder;
+  margin: 0 auto 1rem;
+}
+@media only screen and (max-width: nth($media-sizes, 4)) {
+  .blog-image {
+    margin-top: 1rem;
+  }
+}
+
+.blog-subheading {
+  font-size: 1.45rem;
+  font-weight: 500;
+}
+
+.blog-paragraph {
+  text-indent: 1.5rem;
+  font-size: 1.15rem;
+}
+
+.blog-italic {
+  font-style: italic;
+}
+
+// Only positions the Twitter module, it is loaded dynamically with its own attributes
+.twitter-wrapper {
+  width: 100%;
+  margin: 0 0 15px;
+}
+@media only screen and (max-width: nth($media-sizes, 4)) {
+  .twitter-wrapper {
+    width: 80%;
+    margin: 15px auto 0;
+  }
+}
+@media only screen and (max-width: nth($media-sizes, 2)) {
+  .twitter-wrapper {
+    width: 94%;
+    margin: 15px auto 0;
+  }
+}
+
+// Awesome guide on creating easy vertical lines in Bootstrap
+// https://stackoverflow.com/questions/11815081/how-can-i-add-a-line-between-two-columns-using-twitter-bootstraps-grid-system
+.border-between > [class*="col-"]:before {
+  @include divisionLineHort;
+  bottom: 0;
+  content: " ";
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+.border-between > [class*="col-"]:first-child:before {
+  display: none;
+}
+@media only screen and (max-width: nth($media-sizes, 4)) {
+  .border-between > [class*="col-"]:before {
+    @include divisionLineVert;
+    content: " ";
+    right: 0;
+    position: absolute;
+  }
+}

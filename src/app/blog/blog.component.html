@@ -1,0 +1,26 @@
+<main>
+    <div class="container-fluid">
+        <div class="row border-between">
+            <div class="col-md-9">
+                <ngb-carousel>
+                    <ng-template ngbSlide *ngFor="let blog of blogs.slice().reverse()">
+                        <div [style.background-image]="'url(' + blog.mediaPath + ')'" class="carousel-slide-background-image">
+                        </div>
+                        <div class="carousel-caption">
+                            <h1 class="blog-title">{{blog.title}}</h1>
+                            <h2 class="blog-date">{{blog.date}}</h2>
+                            <button class="read-btn" routerLink="/blog/{{blog.id}}">Read More</button>
+                        </div>
+                    </ng-template>
+
+                </ngb-carousel>
+            </div>
+            <div class="col-md">
+                <!-- Twitter embed is load after the init, through the TS file -->
+                <div class="twitter-wrapper">
+                    <app-twitter-timeline></app-twitter-timeline>
+                </div>
+            </div>
+        </div>
+    </div>
+</main> 

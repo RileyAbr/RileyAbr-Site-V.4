@@ -1,0 +1,99 @@
+<main>
+    <div class="home-wrapper">
+        <div class="container-fluid home-container">
+            <div class="row top-home-row">
+                <a class="col-lg-6 home-tile" routerLink="/resume">
+                    <ngb-carousel [interval]="carouselIntervals[0]" [showNavigationArrows]="showNavigation"
+                        [showNavigationIndicators]="showNavigation">
+                        <ng-template ngbSlide *ngFor="let slide of resumeSlides">
+                                <ng-container [ngTemplateOutlet]="slide.isImage ? image_template : video_template"
+                                [ngTemplateOutletContext]="{slide:slide}">
+                                <ng-template #image_template let-slide="slide">
+                                    <div [style.background-image]="'url(' + slide.mediaPath + ')'"
+                                        class="carousel-slide-background-image">
+                                        <h1 class="home-nav">Resume</h1>
+                                    </div>
+                                </ng-template>
+                                <ng-template #video_template let-slide="slide">
+                                    <video autoplay muted onloadedmetadata="this.muted = true" loop
+                                        src="{{slide.mediaPath}}" class="carousel-slide-background-video">
+                                    </video>
+                                    <h1 class="home-nav">Resume</h1>
+                                </ng-template>
+                                
+                            </ng-container>
+                        </ng-template>
+                        
+                    </ngb-carousel>
+                </a>
+                <a class="col-lg-6 home-tile" routerLink="/portfolio">
+                    <ngb-carousel [interval]="carouselIntervals[1]" [showNavigationArrows]="showNavigation"
+                        [showNavigationIndicators]="showNavigation">
+                        <ng-template ngbSlide *ngFor="let slide of portfolioSlides">
+                            <ng-container [ngTemplateOutlet]="slide.isImage ? image_template : video_template"
+                                [ngTemplateOutletContext]="{slide:slide}">
+                                <ng-template #image_template let-slide="slide">
+                                    <div [style.background-image]="'url(' + slide.mediaPath + ')'"
+                                        class="carousel-slide-background-image">
+                                        <h1 class="home-nav">Portfolio</h1>
+                                    </div>
+                                </ng-template>
+                                <ng-template #video_template let-slide="slide">
+                                    <video autoplay muted onloadedmetadata="this.muted = true" loop
+                                        src="{{slide.mediaPath}}" class="carousel-slide-background-video">
+                                    </video>
+                                </ng-template>
+                            </ng-container>
+                        </ng-template>
+                    </ngb-carousel>
+                </a>
+            </div>
+            <div class="row bot-home-row">
+                <a class="col-lg-6 home-tile" routerLink="/blog">
+                    <ngb-carousel [interval]="carouselIntervals[2]" [showNavigationArrows]="showNavigation"
+                        [showNavigationIndicators]="showNavigation">
+                        <ng-template ngbSlide *ngFor="let slide of blogSlides">
+                                <ng-container [ngTemplateOutlet]="slide.isImage ? image_template : video_template"
+                                [ngTemplateOutletContext]="{slide:slide}">
+                                <ng-template #image_template let-slide="slide">
+                                    <div [style.background-image]="'url(' + slide.mediaPath + ')'"
+                                        class="carousel-slide-background-image">
+                                        <h1 class="home-nav">Blog</h1>
+                                    </div>
+                                </ng-template>
+                                <ng-template #video_template let-slide="slide">
+                                    <video autoplay muted onloadedmetadata="this.muted = true" loop
+                                        src="{{slide.mediaPath}}" class="carousel-slide-background-video">
+                                    </video>
+                                    <h1 class="home-nav">Blog</h1>
+                                </ng-template>
+                            </ng-container>
+                        </ng-template>
+                    </ngb-carousel>
+                </a>
+                <a class="col-lg-6 home-tile" routerLink="/contact">
+                    <ngb-carousel [interval]="carouselIntervals[3]" [showNavigationArrows]="showNavigation"
+                        [showNavigationIndicators]="showNavigation">
+                        <ng-template ngbSlide *ngFor="let slide of contactSlides">
+                                <ng-container [ngTemplateOutlet]="slide.isImage ? image_template : video_template"
+                                [ngTemplateOutletContext]="{slide:slide}">
+                                <ng-template #image_template let-slide="slide">
+                                    <div [style.background-image]="'url(' + slide.mediaPath + ')'"
+                                        class="carousel-slide-background-image">
+                                        <h1 class="home-nav">Contact</h1>
+                                    </div>
+                                </ng-template>
+                                <ng-template #video_template let-slide="slide">
+                                    <video autoplay muted onloadedmetadata="this.muted = true" loop
+                                        src="{{slide.mediaPath}}" class="carousel-slide-background-video">
+                                    </video>
+                                    <h1 class="home-nav">Contact</h1>
+                                </ng-template>
+                            </ng-container>
+                        </ng-template>
+                    </ngb-carousel>
+                </a>
+            </div>
+        </div>
+    </div>
+</main>

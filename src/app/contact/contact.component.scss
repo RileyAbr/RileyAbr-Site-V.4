@@ -1,0 +1,208 @@
+@import "../../styles/variables.scss";
+
+.container-fluid {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
+.row {
+  width: 100%;
+}
+
+.col-md-9 {
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: nth($media-sizes, 4)) {
+  .col-md-9 {
+    max-width: 98%;
+    flex: 0 0 98%;
+  }
+}
+
+#contact-container {
+  font-size: 1.2em;
+}
+
+form {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+  min-height: 100%;
+}
+
+.contact-title {
+  background-color: #b539d8;
+  color: $fontColorWhite;
+  border-radius: $blockRoundness $blockRoundness 0 0;
+  margin: 0;
+  padding: 5px 0;
+  text-align: center;
+}
+
+.contact-row {
+  margin: 25px 0;
+}
+
+.btn-row {
+  text-align: center;
+}
+
+.contact-row input[type="text"],
+.contact-row input[type="date"],
+.contact-row input[type="datetime"],
+.contact-row input[type="email"],
+.contact-row input[type="number"],
+.contact-row input[type="search"],
+.contact-row input[type="time"],
+.contact-row input[type="url"],
+.contact-row textarea,
+.contact-row select {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition-property: box-shadow, padding, border;
+  outline: none;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  width: 80%;
+  margin: 0 10%;
+  background: $blockColorWhite;
+  border: 1px solid #ccc;
+  padding: 1%;
+  color: $fontColorBlack;
+}
+
+.contact-row input[type="text"]:focus,
+.contact-row input[type="date"]:focus,
+.contact-row input[type="datetime"]:focus,
+.contact-row input[type="email"]:focus,
+.contact-row input[type="number"]:focus,
+.contact-row input[type="search"]:focus,
+.contact-row input[type="time"]:focus,
+.contact-row input[type="url"]:focus,
+.contact-row textarea:focus,
+.contact-row select:focus {
+  box-shadow: 0 0 2px $fontColorPurple;
+  padding: 1%;
+  border: 1px solid $fontColorPurple;
+}
+
+.contact-row > label {
+  font-size: 2px;
+  color: transparent;
+  position: absolute;
+}
+
+.contact-btn {
+  @include purpleButton;
+  font-size: 1.2em;
+  border-radius: 45px;
+}
+
+.social-icons-wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 60%;
+  margin: 0 auto;
+}
+@media only screen and (max-width: nth($media-sizes, 2)) {
+  .social-icons-wrapper {
+    width: 90%;
+  }
+}
+
+.social-icon {
+  margin: 20px;
+  width: 150px;
+}
+@media only screen and (max-width: nth($media-sizes, 2)) {
+  .social-icon {
+    width: 100px;
+  }
+}
+
+
+// Submission button modal styles
+// Modal Styles
+.modal-content {
+  background-color: $blockColorWhite;
+  border-radius: .35rem;
+}
+
+.modal-header {
+  background-color: $blockColorPurple;
+}
+
+.modal-title,
+.modal-close {
+  color: $fontColorWhite;
+}
+
+.modal-close {
+  opacity: 1;
+}
+
+.close:not(:disabled):not(.disabled):focus,
+.close:not(:disabled):not(.disabled):hover {
+  opacity: 0.75;
+}
+
+.modal-desc {
+  margin-bottom: 0.5rem;
+}
+
+.contact-modal-email-link {
+  display: block;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.contact-modal-email-link:hover,
+.contact-modal-email-link:focus,
+.contact-modal-email-link:active  {
+  @include underlineLink;
+}
+
+.modal-thanks {
+  margin: 0.25rem 0 0.5rem;
+}
+
+.modal-footer {
+  @include triBackground;
+  justify-content: center;
+  color: $fontColorWhite;
+}
+
+.contact-modal-btn {
+  @include purpleButton;
+}
+
+
+// Awesome guide on creating easy vertical lines in Bootstrap
+// https://stackoverflow.com/questions/11815081/how-can-i-add-a-line-between-two-columns-using-twitter-bootstraps-grid-system
+.border-between > [class*="col-"]:before {
+  @include divisionLineHort;
+  bottom: 0;
+  content: " ";
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+.border-between > [class*="col-"]:first-child:before {
+  display: none;
+}
+
+@media only screen and (max-width: nth($media-sizes, 4)) {
+  .border-between > [class*="col-"]:before {
+    @include divisionLineVert;
+    content: " ";
+    right: 0;
+    position: absolute;
+  }
+}

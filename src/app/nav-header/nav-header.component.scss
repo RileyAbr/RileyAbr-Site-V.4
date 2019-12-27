@@ -1,0 +1,91 @@
+@import "../../styles/variables";
+
+.navbar {
+    @include headerFont;
+    width: 100%;
+}
+
+// Fixed navbar experiment styles
+/*
+.navbar {
+ background-color: #fcfff7;
+ background-image: url("/assets/img/tritexture.png");
+ position: fixed;
+ z-index: 100;
+ height: 60px;
+ box-sizing: ;
+ box-shadow: 1px 1px 6px black;
+}
+Element
+#RA-logo {
+ width: 40px;
+ height: auto;
+}
+*/
+
+.navbar-text {
+    font-size: 2.1em;
+    color: $fontColorBlack;
+}
+
+#RA-logo {
+    @include opacityTransition;
+}
+#RA-logo:hover,
+#RA-logo:focus,
+#RA-logo:active {
+    @include hoverOpacityTransition;
+}
+
+#nametag {
+    font-size: 1.8em;
+    @include opacityTransition;
+}
+#nametag:hover,
+#nametag:focus,
+#nametag:active {
+    @include hoverOpacityTransition;
+}
+
+@media only screen and (max-width: nth($media-sizes, 3)) {
+    #RA-logo {
+        width: 60px;
+        height: auto;
+    }
+    #nametag {
+        font-size: 1.5em;
+    }
+}
+
+.navbar-toggler {
+    @include softBorders;
+    @include borderTransition;
+}
+
+.navbar-toggler:hover,
+.navbar-toggler:focus,
+.navbar-toggler:active {
+    @include hardBorders;
+    @include borderTransition;
+}
+
+#navigation {
+    font-size: 2.1em;
+}
+
+.nav-item > a {
+    color: $fontColorBlack;
+    @include opacityTransition;
+}
+
+.nav-item > a:hover, 
+.nav-item > a:focus, 
+.nav-item > a:active  {
+    color: $fontColorBlack;
+    @include hoverOpacityTransition;
+}
+
+// No transition is necessary on the active element, as it already carries it from the previous styles
+.nav-active {
+    color: $fontColorPurple !important;
+}
